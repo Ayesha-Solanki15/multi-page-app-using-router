@@ -16,8 +16,6 @@ const QuoteForm = (props) => {
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    // optional: Could validate here
-
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
 
@@ -37,7 +35,7 @@ const QuoteForm = (props) => {
     <>
     {/* //we will show the prompt when is entering is true */}
     {/* It takes in message prop as well which is a callback function and takes a location where we wanna go and return a string which will be prompted when we try to navigate to the page , it has a little flaw tho, even if i add all the data and click on Add button which takes us to /quotes page then also it prompts a message*/}
-      <Prompt when={isEntering} message={(location) => 'Are you sure you want to leave? All the data will be lost!'}/>
+      <Prompt when={isEntering} message={(location) => 'Are you sure you want to leave? '}/>
     {/* //to find out if the form is active we can use onFocus here on the form */}
       <Card>
         <form onFocus={formFocusedHandler} className={classes.form} onSubmit={submitFormHandler}>
@@ -56,7 +54,7 @@ const QuoteForm = (props) => {
             <textarea id='text' rows='5' ref={textInputRef}></textarea>
           </div>
           <div className={classes.actions}>
-            <button onclick = {finishEnteringHandler} className='btn'>Add Quote</button>
+            <button onClick = {finishEnteringHandler} className='btn'>Add Quote</button>
           </div>
         </form>
       </Card>
